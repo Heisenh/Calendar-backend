@@ -12,9 +12,9 @@ dbConnection();
 
 // CORS
 app.use(cors({
-  origin: '*',
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  allowedMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  // origin: '*',
+  // allowedHeaders: ['Content-Type', 'Authorization'],
+  // allowedMethods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
 // Directorio publico
@@ -26,6 +26,10 @@ app.use(express.json());
 // Rutas
 app.use('/v1/api/auth', require('./routes/auth'));
 app.use('/v1/api/events', require('./routes/events'));
+
+app.get('*', (req, res) => {
+  res.sendFile(__dirname+'/public/index.html');
+})
 
 
 // Escuchar peticiones

@@ -142,9 +142,38 @@ const deleteEvent = async(req, res = response) => {
 };
 
 
+const getEventsByUser = async(req, res = response) => {
+
+  const event = EventModel(req.body);
+
+  const user = req.uid;
+
+  const events = await EventModel.find({user})
+                                 .populate('user', 'name');
+
+  try {
+
+    res.status(201).json({
+      ok: true,
+      events
+    });
+
+    
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: msgError500
+    });
+  }
+
+};
+
+
 module.exports = {
   getEvents,
   createEvent,
   updateEvent,
-  deleteEvent
+  deleteEvent,
+  getEventsByUser,
 }

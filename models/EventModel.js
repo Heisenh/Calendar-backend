@@ -20,6 +20,11 @@ const EventSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: 'Users',
     required: true
+  },
+  guestUsers: {
+    type: Schema.Types.Array,
+    ref: 'Users',
+    required: false
   }
 });
 

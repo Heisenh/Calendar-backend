@@ -26,6 +26,7 @@ app.use(express.json());
 // Rutas
 app.use('/v1/api/auth', require('./routes/auth'));
 app.use('/v1/api/events', require('./routes/events'));
+app.use('/v1/api/users', require('./routes/users'));
 
 app.get('*', (req, res) => {
   res.sendFile(__dirname+'/public/index.html');

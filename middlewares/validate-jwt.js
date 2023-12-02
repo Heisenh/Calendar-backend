@@ -22,8 +22,6 @@ const validateJWT = (req, res = response, next) => {
 
     req.uid = uid;
     req.name = name;
-
-
     
   } catch (error) {
     console.log(error);
@@ -32,9 +30,6 @@ const validateJWT = (req, res = response, next) => {
       msg: 'Token no válido'
     });
   }
-
-
-
 
   next();
 
